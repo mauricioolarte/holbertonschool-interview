@@ -18,10 +18,14 @@ def canUnlockAll(boxes):
             if k in keys:
                 for m in range(len(boxes[k])):
                     keys.append(boxes[k][m])
+        if keys == boxesnumbers:
+            return True
         counter += 1
         k = 1
 
+    print(keys)
     for j in boxesnumbers:
         if j not in keys:
+            print(j)
             return False
     return True
