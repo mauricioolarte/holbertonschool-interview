@@ -24,6 +24,5 @@ def canUnlockAll(boxes):
     print(keys)
     for j in boxesnumbers:
         if j not in keys:
-            print(j)
             return False
     return True
