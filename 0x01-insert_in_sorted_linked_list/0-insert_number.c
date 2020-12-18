@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include "lists.h"
 /**
-*Insert_node - insert a new node
+*insert_node - insert a new node
 *@head: head linked list
 *@number: number to insert
 *Return: null or new node
