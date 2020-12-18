@@ -35,10 +35,11 @@ listint_t *insert_node(listint_t **head, int number)
 				{
 				return (NULL);
 				}
-			newnode->n = number;
-			newnode->next = temporal->next;
-			temporal->next = newnode;
-			return (newnode);
+				newnode->n = number;
+				newnode->next = temporal->next;
+				temporal->next = newnode;
+				return (newnode);
+			}
 		}
 		if (temporal->next)
 		{
