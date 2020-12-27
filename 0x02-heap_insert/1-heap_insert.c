@@ -11,7 +11,6 @@
 heap_t *heap_insert(heap_t **root, int value)
 {
 	binary_tree_t *newnode = NULL;
-	// binary_tree_t *temp = NULL;
 
 	newnode = (binary_tree_t *)malloc(sizeof(binary_tree_t));
 	if (newnode == NULL)
