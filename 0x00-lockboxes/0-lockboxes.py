@@ -13,17 +13,15 @@ def canUnlockAll(boxes):
         keys.append(boxes[0][i])
     counter = 0
     x = 1
-    while(counter <= boxLen):
-        for k in range(1, boxLen, 1):
-            if k in keys:
-                for m in range(len(boxes[k])):
-                    keys.append(boxes[k][m])
-            if keys == boxesnumbers:
-                return True
-        counter += 1
-        k = 1
+    while(len(boxesnumbers) and counter <= boxLen):
+        for key in boxesnumbers:
+            if key in keys:
+                for m in range(len(boxes[key])):
+                    keys.append(boxes[key][m])
+                boxesnumbers.remove(key)
 
-    for j in boxesnumbers:
-        if j not in keys:
-            return False
+        counter += 1
+
+    if len(boxesnumbers) > 0:
+        return False
     return True
