@@ -2,6 +2,8 @@
 
 
 def canUnlockAll(boxes):
+    ''' this take a list of boxes and return true if you can open
+        all, false if not'''
     boxLen = len(boxes)
     keys = []
     boxesnumbers = []
