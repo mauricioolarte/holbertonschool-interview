@@ -19,7 +19,6 @@ def canUnlockAll(boxes):
                 for m in range(len(boxes[key])):
                     keys.append(boxes[key][m])
                 boxesnumbers.remove(key)
-
         counter += 1
 
     if len(boxesnumbers) > 0:
