@@ -2,6 +2,26 @@
 #include <string.h>
 #include <stdio.h>
 #include "lists.h"
+
+/**
+*new_node - insert a new node
+*@number: number to insert
+*Return: null or new node
+*/
+
+listint_t *new_node(int number)
+{
+	listint_t *new;
+
+	new = malloc(sizeof(listint_t));
+	if (new == NULL)
+		return (NULL);
+
+	new->n = number;
+	new->next = NULL;
+
+	return (new);
+}
 /**
 *insert_node - insert a new node
 *@head: head linked list
@@ -11,24 +31,24 @@
 
 listint_t *insert_node(listint_t **head, int number)
 {
-	listint_t *new;
 	listint_t *current;
 	listint_t *temp;
+	listint_t *new;
 
+	new = new_node(number);
+	if (*head == NULL)
+	{
+		*head = new;
+		return (new);
+	}
 	current = *head;
-	new = malloc(sizeof(listint_t));
-	if (new == NULL)
-		return (NULL);
-	new->n = number;
-	new->next = NULL;
 	if (current->n > number)
 	{
 		*head = new;
 		(*head)->next = current;
 		return (new);
 	}
-	if (*head == NULL)
-		return (*head);
+
 	if (current->next == NULL)
 	{
 		current->next = new;
