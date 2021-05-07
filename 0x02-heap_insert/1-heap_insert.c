@@ -18,7 +18,6 @@ heap_t *heap_insert(heap_t **root, int value)
 	{
 		newnode = binary_tree_node(NULL, value);
 		*root = newnode;
-		printf("hola");
 		return (newnode);
 	}
 	currentnode = *root;
@@ -40,18 +39,16 @@ heap_t *heap_insert(heap_t **root, int value)
 			newnode = binary_tree_node(currentnode->left, value);
 			currentnode->left = newnode;
 			newnode->parent = currentnode;
-			return newnode;
+			return (newnode);
 		}
 		else if (currentnode->right == NULL)
 		{
 			newnode = binary_tree_node(currentnode->right, value);
 			currentnode->right = newnode;
 			newnode->parent = currentnode;
-			return newnode;
+			return (newnode);
 		}
-
 		currentnode = currentnode->left;
 	}
-
 	return (*root);
 }
