@@ -7,7 +7,7 @@ def minOperations(n):
 
     try:
 
-        if type(n) is not int:
+        if not n:
             return int(0)
 
         if n == 1:
