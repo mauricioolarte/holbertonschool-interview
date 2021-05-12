@@ -41,7 +41,7 @@ def minOperations(n):
             if counter < 2:
                 primos.append(number)
 
-    n1 = n
+    n1 = int(n)
     answer = 0
     for number in primos:
         while n1 % number == 0 and n1 / number >= 1:
