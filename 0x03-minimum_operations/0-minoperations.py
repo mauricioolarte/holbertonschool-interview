@@ -20,6 +20,7 @@ primos = [
 def minOperations(n):
     ''' calcula el numero minimo de operaciones para una impresion'''
     answer = 0
+    n = int(n)
     if n < 0:
         return answer
 
