@@ -33,8 +33,8 @@ def minOperations(n):
         for number in range(max(primos) + 1, n+1):
             counter = 0
             i = 1
-            while (i < number):
-                if (number % i == 0):
+            while i < number:
+                if number % i == 0:
                     counter = counter + 1
                 i = i + 1
                 if counter >= 2:
@@ -47,4 +47,4 @@ def minOperations(n):
             n = n / number
             answer = answer + number
 
-    return answer
+    return int(answer)
