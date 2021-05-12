@@ -8,12 +8,12 @@ def minOperations(n):
     try:
 
         if type(n) is not int:
-            return 0
+            return int(0)
 
         if n == 1:
-            return 0
+            return int(0)
         if n == 0:
-            return 0
+            return int(0)
         primos = []
         numbers = []
         i = 1
