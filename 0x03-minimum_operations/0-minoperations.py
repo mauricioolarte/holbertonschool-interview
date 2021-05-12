@@ -28,8 +28,8 @@ def minOperations(n):
     if n == 0:
         return answer
 
-    if n > 1093:
-        for number in range(1093, n+1):
+    if n > max(primos):
+        for number in range(max(primos + 1), n+1):
             counter = 0
             i = 1
             while (i < number):
