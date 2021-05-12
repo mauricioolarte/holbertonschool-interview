@@ -6,7 +6,7 @@ def minOperations(n):
     ''' calcula el numero minimo de operaciones para una impresion'''
 
     if n == 1:
-        return 2
+        return 0
     if n == 0:
         return 0
     primos = []
@@ -23,6 +23,8 @@ def minOperations(n):
             if (number % i == 0):
                 counter = counter + 1
             i = i + 1
+            if counter >= 2:
+                continue
         if counter < 2:
             primos.append(number)
 
