@@ -19,14 +19,14 @@ primos = [
 
 def minOperations(n):
     ''' calcula el numero minimo de operaciones para una impresion'''
-
-    if not n:
-        return int(0)
+    answer = 0
+    if n < 0:
+        return answer
 
     if n == 1:
-        return int(0)
+        return answer
     if n == 0:
-        return int(0)
+        return answer
 
     if n > 1093:
         for number in range(1093, n+1):
@@ -41,11 +41,9 @@ def minOperations(n):
             if counter < 2:
                 primos.append(number)
 
-    n1 = int(n)
-    answer = 0
     for number in primos:
-        while n1 % number == 0 and n1 / number >= 1:
-            n1 = n1 / number
+        while n % number == 0 and n / number >= 1:
+            n = n / number
             answer = answer + number
 
-    return (int(answer))
+    return answer
