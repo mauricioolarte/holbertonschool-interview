@@ -29,7 +29,7 @@ def minOperations(n):
         return answer
 
     if n > max(primos):
-        for number in range(max(primos + 1), n+1):
+        for number in range(max(primos) + 1, n+1):
             counter = 0
             i = 1
             while (i < number):
