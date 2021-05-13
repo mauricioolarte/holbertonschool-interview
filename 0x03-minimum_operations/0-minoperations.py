@@ -5,11 +5,14 @@
 def minOperations(n):
     ''' calcula el numero minimo de operaciones para una impresion'''
     answer = 0
+    if not n:
+        return answer
+
     n = int(n)
 
-    if n == 1:
-        return answer
     if n == 0:
+        return answer
+    if n == 1:
         return answer
 
     for number in range(2, n+1, 1):
