@@ -6,7 +6,7 @@ def minOperations(n):
     ''' calcula el numero minimo de operaciones para una impresion'''
     answer = 0
 
-    if type(n) == type(2):
+    if isinstance(n, int):
         if n == 0:
             return answer
         if n == 1:
