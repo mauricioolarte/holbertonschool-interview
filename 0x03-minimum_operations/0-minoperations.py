@@ -18,4 +18,4 @@ def minOperations(n):
             n = n / number
             answer = answer + number
 
-    return int(answer)
+    return answer
