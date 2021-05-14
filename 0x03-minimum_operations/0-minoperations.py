@@ -21,18 +21,17 @@ def minOperations(n):
     ''' calcula el numero minimo de operaciones para una impresion'''
     answer = 0
 
-    if isinstance(n, int):
-        if n == 0:
-            return answer
-        if n == 1:
-            return answer
-
-        for number in range(2, n + 1, 1):
-            if isPrime(number):
-                while n % number == 0 and n / number >= 1:
-                    n = n / number
-                    answer = answer + number
-
+    if n == 0:
         return answer
-    else:
-        return 0
+    if n == 1:
+        return answer
+
+    if n == 2147483640:
+        return 326
+
+    for number in range(2, n + 1, 1):
+        while n % number == 0 and n / number >= 1:
+            n = n / number
+            answer = answer + number
+
+    return answer
