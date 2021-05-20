@@ -49,17 +49,18 @@ int isStable(int grid[3][3])
  */
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
-	int flag = 1, i = 0, j = 0;
+	int i = 0, j = 0;
 
 	for (i = 0; i < 3; i++)
 	{
 		for (j = 0; j < 3; j++)
 			grid1[i][j] = grid1[i][j] + grid2[i][j];
 	}
-	printf("=\n");
-	print_grid(grid1);
-	while (flag)
+
+	while (isStable(grid1))
 	{
+		printf("=\n");
+		print_grid(grid1);
 		for (i = 0; i < 3; i++)
 		{
 			for (j = 0; j < 3; j++)
@@ -77,12 +78,6 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 					grid1[i][j] -= 4;
 				}
 			}
-		}
-		flag = isStable(grid1);
-		if (flag)
-		{
-			printf("=\n");
-			print_grid(grid1);
 		}
 	}
 }
