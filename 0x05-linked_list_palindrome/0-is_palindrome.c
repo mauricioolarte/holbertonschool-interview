@@ -63,10 +63,8 @@ int is_palindrome(listint_t **head)
 	for (i = 0; i <= n / 2; i++)
 	{
 		if (arr[i] != arr[n - 1 - i])
-			free(arr);
-		return (0);
+			return (0);
 	}
 	free(temp);
-	free(arr);
 	return (1);
 }
