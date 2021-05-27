@@ -24,6 +24,7 @@ int lenght_list(listint_t *head)
 		counter += 1;
 		node = node->next;
 	}
+	free(node);
 	return (counter);
 }
 
