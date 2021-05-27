@@ -39,11 +39,11 @@ int is_palindrome(listint_t **head)
 	listint_t *temp = NULL;
 
 	if (*head == NULL)
-		return (0);
+		return (1);
 
 	n = lenght_list(*head);
-	if (n == 0 || n == 1)
-		return (0);
+	if (n == 0)
+		return (1);
 
 	arr = malloc(sizeof(int) * n);
 	if (arr == NULL)
@@ -61,13 +61,11 @@ int is_palindrome(listint_t **head)
 		counter += 1;
 		temp = temp->next;
 	}
-
 	for (i = 0; i <= n / 2; i++)
 	{
 		if (arr[i] != arr[n - 1 - i])
 			return (0);
 	}
 	free(temp);
-
 	return (1);
 }
