@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 ''' this is for ...'''
 import sys
+import signal
 from datetime import datetime
 
 
@@ -42,50 +43,58 @@ def isFileSize(size):
         return 1
 
 
-def countStatus(status):
-    totals = {
-        200: 0,
-        301: 0,
-        400: 0,
-        401: 0,
-        403: 0,
-        404: 0,
-        405: 0,
-        500: 0
-    }
+def countStatus(status, totals):
+
     for key, value in totals.items():
-        print(status)
         if key == status:
             totals[key] = totals[key] + 1
+            # print(totals.get(status))
     return totals
 
 
-def function():
-    count = 0
-    for line in sys.stdin:
-        if (count < 10):
-            count = count + 1
-            params = line.split(" - ")
-            checkIp = isIp(params[0])
-            checkDate = isDate(params[1][1:26])
-            print(params[1][1:26])
-            checkString = isString(params[1][30:57])
-            print(params[1][30:56])
-            checkStatus = isStatus(params[1][58:61])
-            print(params[1][58:61])
-            checkFileSize = isFileSize(params[1][62:-1])
-            print(params[1][62:-1])
-            statuss = {}
-            statuss = countStatus(print(params[1][58:61]))
-            # print(params[1][58:61])
-            print(line.split(" - "))
-        else:
-            for value, key in statuss.items():
-                print(key)
-            break
+def printAnswer(signal, frame):
+    print(("File size: {}").format(fileSize))
+    for value, key in statuss.items():
+        if key > 0:
+            print(("{}: {}").format(value, key))
+    exit(0)
 
 
-try:
-    function()
-except BrokenPipeError:
-    print('hola')
+count = 0
+fileSize = 0
+statuss = {
+    '200': 0,
+    '301': 0,
+    '400': 0,
+    '401': 0,
+    '403': 0,
+    '404': 0,
+    '405': 0,
+    '500': 0
+}
+
+signal.signal(signal.SIGINT, printAnswer)
+
+for line in sys.stdin:
+
+    count = count + 1
+    params = line.split(" - ")
+    checkIp = isIp(params[0])
+    checkDate = isDate(params[1][1:26])
+    # print(params[1][1:26])
+    checkString = isString(params[1][30:57])
+    # print(params[1][30:56])
+    checkStatus = isStatus(params[1][58:61])
+    # print(params[1][58:61])
+    checkFileSize = isFileSize(params[1][62:-1])
+    # print(params[1][62:-1])
+    statuss = countStatus(params[1][58:61], statuss)
+    fileSize = fileSize + int(params[1][62:-1])
+    # print(fileSize)
+    # print(line.split(" - "))
+    if count == 10:
+        print(("File size: {}").format(fileSize))
+        for value, key in statuss.items():
+            if key > 0:
+                print(("{}: {}").format(value, key))
+        count = 0
