@@ -54,7 +54,7 @@ def countStatus(status):
         500: 0
     }
     for key, value in totals.items():
-		print(status)
+        print(status)
         if key == status:
             totals[key] = totals[key] + 1
     return totals
