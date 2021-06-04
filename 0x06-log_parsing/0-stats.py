@@ -53,7 +53,7 @@ def countStatus(status, totals):
 
 
 def printAnswer(signal, frame):
-    print(("File size: {}").format(fileSize))
+    # print(("File size: {}").format(fileSize))
     for value, key in statuss.items():
         if key > 0:
             print(("{}: {}").format(value, key))
