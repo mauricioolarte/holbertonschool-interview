@@ -59,7 +59,7 @@ def countStatus(status, totals):
     return totals
 
 
-def printAnswer(signal, frame):
+def printAnswer(fileSize, statuss):
     print(("File size: {}").format(fileSize))
     for value, key in statuss.items():
         if key > 0:
@@ -80,36 +80,38 @@ statuss = {
     '500': 0
 }
 
-# for line in sys.stdin:
-for line in fileinput.input():
+try:
+    for line in sys.stdin:
+        count = count + 1
+        params = line.split(" - ")
+        checkIp = isIp(params[0])
+        if checkIp == 0 and len(params) > 1:
+            checkDate = isDate(params[1][1:26])
+            checkString = isString(params[1][29:57])
+            checkStatus = isStatus(params[1][58:61])
+            # print(params[1][58:61])
+            checkFileSize = isFileSize(params[1][62:-1])
+            # print(params[1][62:-1])
+            statuss = countStatus(params[1][58:61], statuss)
+            try:
+                fileSize = fileSize + int(params[1][62:-1])
+            except ValueError:
+                fileSize = fileSize + 0
+            # print(fileSize)
 
-    count = count + 1
-    params = line.split(" - ")
-    checkIp = isIp(params[0])
-    if checkIp == 0 and len(params) > 1:
-        checkDate = isDate(params[1][1:26])
-        checkString = isString(params[1][29:57])
-        checkStatus = isStatus(params[1][58:61])
-        # print(params[1][58:61])
-        checkFileSize = isFileSize(params[1][62:-1])
-        # print(params[1][62:-1])
-        statuss = countStatus(params[1][58:61], statuss)
-        try:
-            fileSize = fileSize + int(params[1][62:-1])
-        except ValueError:
-            fileSize = fileSize + 0
-        # print(fileSize)
-
-    if checkIp == 1 or checkDate == 1 or checkStatus == 1:
-        continue
-    if checkFileSize == 1:
-        continue
-    # print(line.split(" - "))
-    # print(count)
-    if count == 10:
-        print(("File size: {}").format(fileSize))
-        for value, key in statuss.items():
-            if key > 0:
-                print(("{}: {}").format(value, key))
-        count = 0
-signal.signal(signal.SIGINT, printAnswer)
+        if checkIp == 1 or checkDate == 1 or checkStatus == 1:
+            continue
+        if checkFileSize == 1:
+            continue
+        # print(line.split(" - "))
+        # print(count)
+        if count == 10:
+            print(("File size: {}").format(fileSize))
+            for value, key in statuss.items():
+                if key > 0:
+                    print(("{}: {}").format(value, key))
+            count = 0
+except KeyboardInterrupt:
+    pass
+finally:
+    printAnswer(fileSize, statuss)
