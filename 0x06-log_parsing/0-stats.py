@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 ''' this is for ...'''
 import sys
+import fileinput
 import signal
 from datetime import datetime
 
@@ -79,7 +80,9 @@ statuss = {
     '500': 0
 }
 
-for line in sys.stdin:
+# for line in sys.stdin:
+for line in fileinput.input():
+
     count = count + 1
     params = line.split(" - ")
     checkIp = isIp(params[0])
