@@ -58,12 +58,12 @@ def countStatus(status, totals):
     return totals
 
 
-# def printAnswer(signal, frame):
-#     print(("File size: {}").format(fileSize))
-#     for value, key in statuss.items():
-#         if key > 0:
-#             print(("{}: {}").format(value, key))
-#     sys.exit(0)
+def printAnswer(signal, frame):
+    print(("File size: {}").format(fileSize))
+    for value, key in statuss.items():
+        if key > 0:
+            print(("{}: {}").format(value, key))
+    sys.exit(0)
 
 
 count = 0
@@ -78,8 +78,6 @@ statuss = {
     '405': 0,
     '500': 0
 }
-
-# signal.signal(signal.SIGINT, printAnswer)
 
 for line in sys.stdin:
     count = count + 1
@@ -111,4 +109,4 @@ for line in sys.stdin:
             if key > 0:
                 print(("{}: {}").format(value, key))
         count = 0
-# sys.exit(0)
+signal.signal(signal.SIGINT, printAnswer)
