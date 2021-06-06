@@ -111,4 +111,4 @@ for line in sys.stdin:
             if key > 0:
                 print(("{}: {}").format(value, key))
         count = 0
-sys.exit(0)
+# sys.exit(0)
