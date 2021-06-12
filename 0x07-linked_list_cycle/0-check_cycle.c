@@ -28,17 +28,12 @@ int check_cycle(listint_t *list)
 			fast = fast->next;
 			if (fast == slow)
 			{
-				free(fast);
-				free(slow);
 				return (1);
 			}
 		}
 		fast = slow->next;
 		slow = slow->next;
 	}
-
-	free(fast);
-	free(slow);
 
 	return (0);
 }
