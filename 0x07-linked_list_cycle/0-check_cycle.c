@@ -2,7 +2,6 @@
 #include <string.h>
 #include <stdio.h>
 #include "lists.h"
-
 /**
  * check_cycle - list
  * @list: linked list
@@ -17,27 +16,20 @@ int check_cycle(listint_t *list)
 
 	if (list == NULL)
 		return (0);
-
 	fast = list;
 	slow = list;
-
-	while (slow != NULL || fast)
+	while (slow)
 	{
-		while (fast != NULL && fast != list)
+		while (fast)
 		{
-			if (fast->next && fast->next == slow)
+			fast = fast->next;
+			if (fast == slow)
 			{
 				return (1);
 			}
-			fast = fast->next;
 		}
-		if (slow->next)
-		{
-			slow = slow->next;
-			fast = slow->next;
-		}
-		slow = slow->next;
 		fast = slow->next;
+		slow = slow->next;
 	}
 
 	return (0);
