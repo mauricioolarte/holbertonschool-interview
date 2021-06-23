@@ -5,6 +5,6 @@
 def validUTF8(data):
     ''' check array '''
     for bite in data:
-        if bite <= 0 or bite >= 128:
+        if(bite.bit_length() > 8):
             return False
     return True
