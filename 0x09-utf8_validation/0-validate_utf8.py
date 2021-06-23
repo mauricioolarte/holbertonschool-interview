@@ -3,7 +3,7 @@
 
 
 def validUTF8(data):
-	''' check array '''
+    ''' check array '''
     for bite in data:
         if bite < 0 or bite > 255:
             return False
