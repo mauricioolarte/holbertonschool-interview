@@ -4,24 +4,11 @@
 
 #include "slide_line.h"
 
-/**
- * slide_line - function to slide and merge
- *
- * @line: pointer to array
- * @size: size of array
- * @direction: slide right or left
- *
- * Return: EXIT_SUCCESS or EXIT_FAILURE
- */
-int slide_line(int *line, size_t size, int direction)
+void left(int *line, size_t size)
 {
-	size_t i = 0, signus = 0;
+	size_t signus = -1, i = 0;
 
-	if (direction != 1 && direction != 2)
-		return (0);
-	signus = (direction == 2) ? -1 : 1;
-
-	for (i = 0; i < size - 1; i++)
+	for (i = 0; i < size; i++)
 	{
 		size_t index = i + 1;
 
@@ -37,10 +24,53 @@ int slide_line(int *line, size_t size, int direction)
 				*(line + index - signus) += *(line + index);
 				*(line + index) = 0;
 			}
-
 			index -= 1;
 		}
 	}
+}
 
+void right(int *line, size_t size)
+{
+	size_t signus = 1, i = 0;
+
+	for (i = size - 1; i > 0; i--)
+	{
+		size_t index = i - 1;
+
+		while (index)
+		{
+			if (*(line + index - signus) == 0 && (line + index) != 0)
+			{
+				*(line + index - signus) = *(line + index);
+				*(line + index) = 0;
+			}
+			if (*(line + index - signus) == *(line + index))
+			{
+				*(line + index - signus) += *(line + index);
+				*(line + index) = 0;
+			}
+			index -= 1;
+		}
+	}
+}
+
+/**
+ * slide_line - function to slide and merge
+ *
+ * @line: pointer to array
+ * @size: size of array
+ * @direction: slide right or left
+ *
+ * Return: EXIT_SUCCESS or EXIT_FAILURE
+ */
+int slide_line(int *line, size_t size, int direction)
+{
+	if (direction != 1 && direction != 2)
+		return (0);
+
+	if (direction == 1)
+		right(line, size);
+	if (direction == 2)
+		left(line, size);
 	return (1);
 }
