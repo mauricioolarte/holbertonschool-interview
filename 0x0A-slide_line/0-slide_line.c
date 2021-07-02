@@ -43,13 +43,13 @@ void left(int *line, size_t size)
  */
 void right(int *line, size_t size)
 {
-	size_t signus = -1, i = 0;
+	size_t signus = -1, i = 0, pos = 0;
 
-	for (i = size - 1; i > 0; i--)
+	for (i = size; i > 0; i--)
 	{
 		size_t index = i - 1;
 
-		while (index)
+		while (index < size - 1)
 		{
 			if (*(line + index - signus) == 0 && (line + index) != 0)
 			{
@@ -61,8 +61,11 @@ void right(int *line, size_t size)
 				*(line + index - signus) += *(line + index);
 				*(line + index) = 0;
 			}
-			index -= 1;
+			index += 1;
+			if (index == pos)
+				break;
 		}
+		pos = i;
 	}
 }
 
