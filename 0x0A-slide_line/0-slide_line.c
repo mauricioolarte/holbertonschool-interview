@@ -4,6 +4,12 @@
 
 #include "slide_line.h"
 
+/**
+ * left - function to slide and merge
+ *
+ * @line: pointer to array
+ * @size: size of array
+ */
 void left(int *line, size_t size)
 {
 	size_t signus = -1, i = 0;
@@ -29,6 +35,12 @@ void left(int *line, size_t size)
 	}
 }
 
+/**
+ * right - function to slide and merge
+ *
+ * @line: pointer to array
+ * @size: size of array
+ */
 void right(int *line, size_t size)
 {
 	size_t signus = 1, i = 0;
