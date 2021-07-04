@@ -12,7 +12,7 @@
  */
 void left(int *line, size_t size)
 {
-	size_t signus = 1, i = 0;
+	size_t signus = 1, i = 0, pos = 0;
 
 	for (i = 0; i < size - 1; i++)
 	{
@@ -25,10 +25,12 @@ void left(int *line, size_t size)
 				*(line + index - signus) = *(line + index);
 				*(line + index) = 0;
 			}
-			if (*(line + index - signus) == *(line + index))
+			if (*(line + index - signus) == *(line + index) && *(line + index - signus) != 0 && index > pos)
 			{
 				*(line + index - signus) += *(line + index);
 				*(line + index) = 0;
+				pos += 1;
+				break;
 			}
 			index -= 1;
 		}
@@ -43,7 +45,7 @@ void left(int *line, size_t size)
  */
 void right(int *line, size_t size)
 {
-	size_t signus = -1, i = 0, pos = 0;
+	size_t signus = -1, i = 0, pos = size - 1;
 
 	for (i = size; i > 0; i--)
 	{
@@ -56,16 +58,15 @@ void right(int *line, size_t size)
 				*(line + index - signus) = *(line + index);
 				*(line + index) = 0;
 			}
-			if (*(line + index - signus) == *(line + index))
+			if (*(line + index - signus) == *(line + index) && *(line + index - signus) != 0 && index < pos)
 			{
 				*(line + index - signus) += *(line + index);
 				*(line + index) = 0;
+				pos -= 1;
+				break;
 			}
 			index += 1;
-			if (index == pos)
-				break;
 		}
-		pos = i;
 	}
 }
 
