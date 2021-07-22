@@ -26,7 +26,7 @@ for i in range(N):
     board.append([])
     for j in range(N):
         board[i].append(0)
-print(board)
+# print(board)
 
 # checkQueen
 
