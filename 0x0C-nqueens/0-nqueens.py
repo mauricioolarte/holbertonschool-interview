@@ -8,7 +8,7 @@ import sys
 
 global N
 
-if len(sys.argv) > 2:
+if len(sys.argv) > 2 or len(sys.argv) == 1:
     print("Usage: nqueens N")
     sys.exit(1)
 
