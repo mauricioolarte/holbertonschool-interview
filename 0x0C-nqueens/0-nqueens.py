@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-''' N queens algoritm '''
+''' N queens algoritm
+'''
 
 import sys
 
@@ -21,54 +22,17 @@ except ValueError:
     sys.exit(1)
 
 
-# create Board
-board = []
-for i in range(N):
-    board.append([])
-    for j in range(N):
-        board[i].append(0)
-# print(board)
-
-# checkQueen
+def queens(n, i, a, b, c):
+    if i < n:
+        for j in range(n):
+            if j not in a and i + j not in b and i - j not in c:
+                yield from queens(n, i + 1, a + [j], b + [i + j], c + [i - j])
+    else:
+        yield a
 
 
-def checkQueen(board, row, col):
-    for i in range(col):
-        if board[row][i] == 1:
-            return False
-    for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
-        if board[i][j] == 1:
-            return False
-    for i, j in zip(range(row, N, 1), range(col, -1, -1)):
-        if board[i][j] == 1:
-            return False
-    return True
-
-# put queen
-
-
-def putQueen(board, col):
-    if col >= N:
-        return True
-
-    for i in range(N):
-
-        if checkQueen(board, i, col):
-            board[i][col] = 1
-
-            if putQueen(board, col + 1) is True:
-                return True
-
-            board[i][col] = 0
-
-    return False
-
-
-if N == 4:
-    print([[0, 1], [1, 3], [2, 0], [3, 2]])
-    print([[0, 2], [1, 0], [2, 3], [3, 1]])
-if N == 6:
-    print([[0, 1], [1, 3], [2, 5], [3, 0], [4, 2], [5, 4]])
-    print([[0, 2], [1, 5], [2, 1], [3, 4], [4, 0], [5, 3]])
-    print([[0, 3], [1, 0], [2, 4], [3, 1], [4, 5], [5, 2]])
-    print([[0, 4], [1, 2], [2, 0], [3, 5], [4, 3], [5, 1]])
+for solution in queens(N, 0, [], [], []):
+    res = []
+    for i in range(len(solution)):
+        res.append([i, solution[i]])
+    print(res)
