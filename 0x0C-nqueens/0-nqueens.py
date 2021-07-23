@@ -53,20 +53,13 @@ def putQueen(board, col):
     for i in range(N):
 
         if checkQueen(board, i, col):
-            # Place this queen in board[i][col]
             board[i][col] = 1
 
-            # recur to place rest of the queens
             if putQueen(board, col + 1) is True:
                 return True
 
-            # If placing queen in board[i][col
-            # doesn't lead to a solution, then
-            # queen from board[i][col]
             board[i][col] = 0
 
-    # if the queen can not be placed in any row in
-    # this colum col  then return false
     return False
 
 
