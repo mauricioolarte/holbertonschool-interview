@@ -16,6 +16,9 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 {
 	skiplist_t *currennode;
 
+	if (list == NULL)
+		return (NULL);
+
 	currennode = list;
 
 	currennode = malloc(sizeof(*currennode));
