@@ -27,7 +27,6 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 		free_skiplist(currennode);
 		return (NULL);
 	}
-
 	currennode = list;
 	while (currennode && currennode->express)
 	{
@@ -50,9 +49,7 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 		}
 		currennode = currennode->express;
 		if (currennode == NULL)
-		{
 			return (NULL);
-		}
 	}
 
 	return (list);
