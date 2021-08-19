@@ -28,7 +28,7 @@ def rain(walls):
             else:
                 for val in range(idxL + 1, idxR):
                     height = min(walls[idxR], walls[idxL])
-                    res += height
+                    res += height - walls[val]
                 index = idxR
                 continue
         index += 1
