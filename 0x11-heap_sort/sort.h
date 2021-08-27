@@ -2,7 +2,7 @@
 #define SORT_H
 
 /**
- * struct MaxHeap - singly linked list
+ * struct MaxHeap - struct
  * @size: integer
  * @array: points to the next node
  *

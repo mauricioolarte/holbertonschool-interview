@@ -55,7 +55,9 @@ void maxHeapify(struct MaxHeap *maxHeap, size_t idx)
 struct MaxHeap *createAndBuildHeap(int *array, size_t size)
 {
 	int i;
-	struct MaxHeap *maxHeap =
+	struct MaxHeap *maxHeap;
+
+	maxHeap =
 			(struct MaxHeap *)malloc(sizeof(struct MaxHeap));
 	maxHeap->size = size;
 	maxHeap->array = array;
