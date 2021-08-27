@@ -78,6 +78,8 @@ void heap_sort(int *array, size_t size)
 {
 	struct MaxHeap *maxHeap = createAndBuildHeap(array, size);
 
+	if (size < 2)
+		return;
 	while (maxHeap->size > 1)
 	{
 
