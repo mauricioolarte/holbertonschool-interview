@@ -71,6 +71,12 @@ int advanced_binary(int *array, size_t size, int value)
 {
 	int res = 0;
 
+	if (array == NULL)
+	{
+		printf("Searching in array:\n");
+		return (-1);
+	}
+
 	res = recursiveBinarySearch(array, 0, size - 1, value);
 
 	return (res);
