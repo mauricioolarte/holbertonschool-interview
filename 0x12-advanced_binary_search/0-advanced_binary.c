@@ -33,19 +33,10 @@ void print_array(int *array, size_t start_index, size_t end_index)
 int recursiveBinarySearch(int array[], size_t start_index,
 													size_t end_index, int element)
 {
-
-	print_array(array, start_index, end_index);
-	if (array == NULL)
-		return (-1);
-
-	if (end_index == start_index && array[start_index] == element)
-		return (start_index);
-	if (end_index == start_index && array[start_index] != element)
-		return (-1);
-	if (end_index > start_index)
+	if (end_index >= start_index)
 	{
 		int middle = start_index + (end_index - start_index) / 2;
-
+		print_array(array, start_index, end_index);
 		if (array[middle] == element)
 		{
 			if ((middle - 1) >= 0 && array[middle - 1] == element)
@@ -55,8 +46,8 @@ int recursiveBinarySearch(int array[], size_t start_index,
 			return (middle);
 		}
 
-		if (array[middle] > element)
-			return (recursiveBinarySearch(array, start_index, middle - 1, element));
+		if (array[middle] >= element)
+			return (recursiveBinarySearch(array, start_index, middle, element));
 		return (recursiveBinarySearch(array, middle + 1, end_index, element));
 	}
 	return (-1);
@@ -73,11 +64,8 @@ int advanced_binary(int *array, size_t size, int value)
 {
 	int res = 0;
 
-	if (array == NULL)
-	{
-		printf("Searching in array:\n");
+	if (!array)
 		return (-1);
-	}
 
 	res = recursiveBinarySearch(array, 0, size - 1, value);
 
