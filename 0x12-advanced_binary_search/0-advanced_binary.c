@@ -34,10 +34,8 @@ int recursiveBinarySearch(int array[], size_t start_index,
 													size_t end_index, int element)
 {
 
-	size_t size = end_index - start_index;
-
 	print_array(array, start_index, end_index);
-	if (array == NULL || size == 0)
+	if (array == NULL)
 		return (-1);
 
 	if (end_index >= start_index)
