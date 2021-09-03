@@ -12,6 +12,7 @@ void print_array(int *array, size_t start_index, size_t end_index)
 {
 	size_t i = 0;
 
+	printf("Searching in array: ");
 	for (i = start_index; i <= end_index; i++)
 	{
 		if (i == end_index)
