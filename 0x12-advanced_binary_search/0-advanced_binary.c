@@ -44,7 +44,7 @@ int recursiveBinarySearch(int array[], size_t start_index,
 
 		if (array[middle] == element)
 		{
-			if (array[middle - 1] == element)
+			if ((middle - 1) > 0 && array[middle - 1] == element)
 			{
 				return (recursiveBinarySearch(array, start_index, middle, element));
 			}
