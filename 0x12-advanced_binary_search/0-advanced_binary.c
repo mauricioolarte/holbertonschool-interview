@@ -38,13 +38,17 @@ int recursiveBinarySearch(int array[], size_t start_index,
 	if (array == NULL)
 		return (-1);
 
-	if (end_index >= start_index)
+	if (end_index == start_index && array[start_index] == element)
+		return (start_index);
+	if (end_index == start_index && array[start_index] != element)
+		return (-1);
+	if (end_index > start_index)
 	{
 		int middle = start_index + (end_index - start_index) / 2;
 
 		if (array[middle] == element)
 		{
-			if ((middle - 1) > 0 && array[middle - 1] == element)
+			if ((middle - 1) >= 0 && array[middle - 1] == element)
 			{
 				return (recursiveBinarySearch(array, start_index, middle, element));
 			}
