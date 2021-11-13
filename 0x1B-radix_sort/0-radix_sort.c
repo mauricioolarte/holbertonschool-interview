@@ -2,7 +2,7 @@
 
 /**
  * finder_maximum - Finds the maxi integer in an array.
- * @array: Array 
+ * @array: Array
  * @size: Size array.
  *
  * Return: max.
@@ -21,9 +21,9 @@ int finder_maximum(int *array, int size)
  * counter - Sort the array digit.
  * @array: Array
  * @size: Size array.
- * @tmp: Integer 
+ * @tmp: Integer
  *
- * Return: 
+ * Return:
  */
 
 void counter(int *array, int size, int tmp)
@@ -49,10 +49,10 @@ void counter(int *array, int size, int tmp)
 
 /**
  * radix_sort - Sorts .
- * @array: Array 
- * @size: Size 
+ * @array: Array
+ * @size: Size
  *
- * Return: 
+ * Return:
  */
 
 void radix_sort(int *array, size_t size)
