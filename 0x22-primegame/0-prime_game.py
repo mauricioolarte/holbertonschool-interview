@@ -12,7 +12,7 @@ def isWinner(x, nums):
 
     for round in range(x):
         _sum = sum((i != 0 and i <= nums[round])
-                   for i in primes[:nums[round] + 1])
+                   for i in prime[:nums[round] + 1])
         if (_sum % 2):
             winner = "Maria"
         else:
@@ -34,7 +34,7 @@ def add_prime(num, primes):
 
     last_prime = primes[-1]
     if num > last_prime:
-        for i in range(last_prime + 1, n + 1):
+        for i in range(last_prime + 1, num + 1):
             if is_prime(i):
                 primes.append(i)
             else:
