@@ -20,9 +20,9 @@ def isWinner(x, nums):
         if winner:
             person[winner] += 1
 
-    if person["Maria"] > s["Ben"]:
+    if person["Maria"] > person["Ben"]:
         return "Maria"
-    elif person["Ben"] > s["Maria"]:
+    elif person["Ben"] > person["Maria"]:
         return "Ben"
 
     return None
